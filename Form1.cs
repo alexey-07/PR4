@@ -56,11 +56,11 @@ namespace PR4
 
         private void ButtonTypeEdit_Click(object sender, EventArgs e)
         {
-            if(dataGridViewTypes.SelectedRows.Count > 0)
+            if (dataGridViewTypes.SelectedRows.Count > 0)
             {
                 int index = dataGridViewTypes.SelectedRows[0].Index;
                 short id = 0;
-                bool converted = Int16.TryParse(dataGridViewTypes[0,index].Value.ToString(), out id);
+                bool converted = Int16.TryParse(dataGridViewTypes[0, index].Value.ToString(), out id);
 
                 if (!converted)
                     return;
@@ -75,12 +75,36 @@ namespace PR4
                     return;
 
                 }
-                typeOfPartner.TypeOfPartner1= formTypesAdd.textBoxTypeName.Text;
+                typeOfPartner.TypeOfPartner1 = formTypesAdd.textBoxTypeName.Text;
                 db.SaveChanges();
                 MessageBox.Show("Объект изменен!");
                 this.dataGridViewTypes.DataSource = this.db.TypeOfPartners.Local.OrderBy(o => o.TypeOfPartner1).ToList();
             }
 
+        }
+
+        private void buttonTypeDelete_Click(object sender, EventArgs e)
+        {
+            if(dataGridViewTypes.SelectedRows.Count ==0)
+                return;
+            DialogResult result = MessageBox.Show(
+               "Вы уверены, что хотите удалить объект?",
+               "",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+                return;
+            int index = dataGridViewTypes.SelectedRows[0].Index;
+            short id = 0;
+            bool converted = Int16.TryParse(dataGridViewTypes[0, index].Value.ToString(), out id);
+            if (!converted)
+                return;
+
+            TypeOfPartner typeOfPartner = db.TypeOfPartners.Find(id);
+            db.TypeOfPartners.Remove(typeOfPartner);
+            db.SaveChanges();
+            MessageBox.Show("Объект удален!");
+            this.dataGridViewTypes.DataSource = this.db.TypeOfPartners.Local.OrderBy(o => o.TypeOfPartner1).ToList();
         }
     }
 }
