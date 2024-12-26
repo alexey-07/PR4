@@ -105,6 +105,7 @@
             buttonTypeAdd.TabIndex = 0;
             buttonTypeAdd.Text = "Добавить";
             buttonTypeAdd.UseVisualStyleBackColor = true;
+            buttonTypeAdd.Click += ButtonTypeAdd_Click;
             // 
             // Form1
             // 
@@ -115,7 +116,6 @@
             Controls.Add(panelTop);
             Name = "Form1";
             Text = "FormMain";
-            Load += Form1_Load;
             panelFill.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewTypes).EndInit();
             panelTop.ResumeLayout(false);
