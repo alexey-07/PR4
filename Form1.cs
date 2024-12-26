@@ -4,45 +4,24 @@ namespace PR4
 {
     public partial class Form1 : Form
     {
-
+        private PartnersContext db;
         public Form1()
         {
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            this.db = new PartnersContext();
+            this.db.TypeOfPartners.Load();
+            this.dataGridViewTypes.DataSource = this.db.TypeOfPartners.Local.OrderBy(o=>o.TypeOfPartner1).ToList();
+            dataGridViewTypes.Columns["TypeOfPartner1"].HeaderText = "Тип";
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (PartnersContext db = new PartnersContext())
-            {
-                var partners = db.Partners.Include(u=>u.IdTypeOfPartnerNavigation).ToList();
-                int yOffset = 10;
-                foreach (Partner u in partners)
-                {
-                    Panel panelPartn = new Panel
-                    {
-                        AutoSize = true,
-                       Location = new System.Drawing.Point(15, yOffset),
-                        BorderStyle = BorderStyle.FixedSingle,
-                    };
-
-
-                    Label partnerLabel = new Label
-                    {
-                        Text = $"{u.IdTypeOfPartnerNavigation.TypeOfPartner1}| " +
-                       $"{u.NameProduct}\n" +
-                       $"{u.DirectorsName}\n" +
-                       $"{u.MobilePhone}\n"+
-                       $"Рейтинг: {u.Rating}",
-                       AutoSize= true,
-
-                    };
-
-                   panelPartn.Controls.Add( partnerLabel);
-                    panelFill.Controls.Add( panelPartn );
-                    yOffset += panelPartn.Height + 15;
-                }
-            }
+          
  
         }
     }

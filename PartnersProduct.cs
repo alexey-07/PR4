@@ -15,7 +15,7 @@ public partial class PartnersProduct
 
     public DateTimeOffset SalesDate { get; set; }
 
-    public virtual Partner IdPartnerNavigation { get; set; } = null!;
+    public virtual Partner Partner { get; set; } = null!;
 
-    public virtual Product IdProductNavigation { get; set; } = null!;
+    /*public virtual Product Partner { get; set; } = null!;*/
 }

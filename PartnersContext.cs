@@ -15,7 +15,7 @@ public partial class PartnersContext : DbContext
     {
     }
 
-    public virtual DbSet<Partner> Partners { get; set; }
+    public virtual DbSet<Partner> Partner { get; set; }
 
     public virtual DbSet<PartnersProduct> PartnersProducts { get; set; }
 
@@ -37,7 +37,7 @@ public partial class PartnersContext : DbContext
 
             entity.Property(e => e.Inn).HasColumnName("INN");
 
-            entity.HasOne(d => d.IdTypeOfPartnerNavigation).WithMany(p => p.Partners)
+            entity.HasOne(d => d.TypeOfPartner).WithMany(p => p.Partners)
                 .HasForeignKey(d => d.IdTypeOfPartner)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_partners_typesOfPartner");
@@ -51,12 +51,12 @@ public partial class PartnersContext : DbContext
 
             entity.Property(e => e.SalesDate).HasColumnType("time with time zone");
 
-            entity.HasOne(d => d.IdPartnerNavigation).WithMany(p => p.PartnersProducts)
+            entity.HasOne(d => d.Partner).WithMany(p => p.PartnersProducts)
                 .HasForeignKey(d => d.IdPartner)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_product_IdPartner");
 
-            entity.HasOne(d => d.IdProductNavigation).WithMany(p => p.PartnersProducts)
+            entity.HasOne(d => d.Partner).WithMany(p => p.PartnersProducts)
                 .HasForeignKey(d => d.IdProduct)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_product_IdProduct");
@@ -70,7 +70,7 @@ public partial class PartnersContext : DbContext
                 .HasColumnType("money")
                 .HasColumnName("MinimumCostForAPartner");
 
-            entity.HasOne(d => d.IdTypeProductNavigation).WithMany(p => p.Products)
+            entity.HasOne(d => d.TypeProduct).WithMany(p => p.Products)
                 .HasForeignKey(d => d.IdTypeProduct)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_product_typesOfProduct");

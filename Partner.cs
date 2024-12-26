@@ -23,7 +23,9 @@ public partial class Partner
 
     public float Rating { get; set; }
 
-    public virtual TypeOfPartner IdTypeOfPartnerNavigation { get; set; } = null!;
+    // навигационные свойства
+
+    public virtual TypeOfPartner TypeOfPartner { get; set; } = null!;
 
     public virtual ICollection<PartnersProduct> PartnersProducts { get; set; } = new List<PartnersProduct>();
 }

@@ -28,41 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            panelTop = new Panel();
             panelFill = new Panel();
+            dataGridViewTypes = new DataGridView();
+            panelTop = new Panel();
+            buttonTypeDelete = new Button();
+            buttonTypeEdit = new Button();
+            buttonTypeAdd = new Button();
+            panelFill.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTypes).BeginInit();
             panelTop.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // panelFill
             // 
-            label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(10, 10);
-            label1.Name = "label1";
-            label1.Padding = new Padding(10);
-            label1.Size = new Size(780, 80);
-            label1.TabIndex = 0;
-            label1.Text = "Список партнеров:";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            panelFill.Controls.Add(dataGridViewTypes);
+            panelFill.Dock = DockStyle.Fill;
+            panelFill.Location = new Point(0, 69);
+            panelFill.Name = "panelFill";
+            panelFill.Padding = new Padding(10);
+            panelFill.Size = new Size(800, 381);
+            panelFill.TabIndex = 1;
+            // 
+            // dataGridViewTypes
+            // 
+            dataGridViewTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
+            dataGridViewTypes.BackgroundColor = Color.White;
+            dataGridViewTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTypes.Dock = DockStyle.Fill;
+            dataGridViewTypes.Location = new Point(10, 10);
+            dataGridViewTypes.MultiSelect = false;
+            dataGridViewTypes.Name = "dataGridViewTypes";
+            dataGridViewTypes.ReadOnly = true;
+            dataGridViewTypes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewTypes.Size = new Size(780, 361);
+            dataGridViewTypes.TabIndex = 0;
             // 
             // panelTop
             // 
-            panelTop.Controls.Add(label1);
+            panelTop.AutoSize = true;
+            panelTop.Controls.Add(buttonTypeDelete);
+            panelTop.Controls.Add(buttonTypeEdit);
+            panelTop.Controls.Add(buttonTypeAdd);
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
             panelTop.Padding = new Padding(10);
-            panelTop.Size = new Size(800, 100);
+            panelTop.Size = new Size(800, 69);
             panelTop.TabIndex = 0;
             // 
-            // panelFill
+            // buttonTypeDelete
             // 
-            panelFill.Dock = DockStyle.Fill;
-            panelFill.Location = new Point(0, 100);
-            panelFill.Name = "panelFill";
-            panelFill.Size = new Size(800, 350);
-            panelFill.TabIndex = 1;
+            buttonTypeDelete.AutoSize = true;
+            buttonTypeDelete.Location = new Point(265, 26);
+            buttonTypeDelete.Name = "buttonTypeDelete";
+            buttonTypeDelete.Size = new Size(120, 30);
+            buttonTypeDelete.TabIndex = 2;
+            buttonTypeDelete.Text = "Удалить";
+            buttonTypeDelete.UseVisualStyleBackColor = true;
+            // 
+            // buttonTypeEdit
+            // 
+            buttonTypeEdit.AutoSize = true;
+            buttonTypeEdit.Location = new Point(139, 26);
+            buttonTypeEdit.Name = "buttonTypeEdit";
+            buttonTypeEdit.Size = new Size(120, 30);
+            buttonTypeEdit.TabIndex = 1;
+            buttonTypeEdit.Text = "Редактировать";
+            buttonTypeEdit.UseVisualStyleBackColor = true;
+            // 
+            // buttonTypeAdd
+            // 
+            buttonTypeAdd.AutoSize = true;
+            buttonTypeAdd.Location = new Point(13, 26);
+            buttonTypeAdd.Name = "buttonTypeAdd";
+            buttonTypeAdd.Size = new Size(120, 30);
+            buttonTypeAdd.TabIndex = 0;
+            buttonTypeAdd.Text = "Добавить";
+            buttonTypeAdd.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -74,14 +116,21 @@
             Name = "Form1";
             Text = "FormMain";
             Load += Form1_Load;
+            panelFill.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTypes).EndInit();
             panelTop.ResumeLayout(false);
+            panelTop.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private Panel panelTop;
         private Panel panelFill;
+        private Panel panelTop;
+        private Button buttonTypeAdd;
+        private Button buttonTypeDelete;
+        private Button buttonTypeEdit;
+        private DataGridView dataGridViewTypes;
     }
 }
