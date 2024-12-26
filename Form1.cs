@@ -53,5 +53,34 @@ namespace PR4
             this.dataGridViewTypes.DataSource = this.db.TypeOfPartners.Local.OrderBy(o => o.TypeOfPartner1).ToList();
 
         }
+
+        private void ButtonTypeEdit_Click(object sender, EventArgs e)
+        {
+            if(dataGridViewTypes.SelectedRows.Count > 0)
+            {
+                int index = dataGridViewTypes.SelectedRows[0].Index;
+                short id = 0;
+                bool converted = Int16.TryParse(dataGridViewTypes[0,index].Value.ToString(), out id);
+
+                if (!converted)
+                    return;
+
+                TypeOfPartner typeOfPartner = db.TypeOfPartners.Find(id);
+
+                FormTypesAdd formTypesAdd = new();
+                formTypesAdd.textBoxTypeName.Text = typeOfPartner.TypeOfPartner1;
+                DialogResult result = formTypesAdd.ShowDialog(this);
+                if (result == DialogResult.Cancel)
+                {
+                    return;
+
+                }
+                typeOfPartner.TypeOfPartner1= formTypesAdd.textBoxTypeName.Text;
+                db.SaveChanges();
+                MessageBox.Show("Объект изменен!");
+                this.dataGridViewTypes.DataSource = this.db.TypeOfPartners.Local.OrderBy(o => o.TypeOfPartner1).ToList();
+            }
+
+        }
     }
 }

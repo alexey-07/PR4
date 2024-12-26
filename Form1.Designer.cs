@@ -95,6 +95,7 @@
             buttonTypeEdit.TabIndex = 1;
             buttonTypeEdit.Text = "Редактировать";
             buttonTypeEdit.UseVisualStyleBackColor = true;
+            buttonTypeEdit.Click += ButtonTypeEdit_Click;
             // 
             // buttonTypeAdd
             // 
