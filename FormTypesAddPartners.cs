@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace PR4
+﻿namespace PR4
 {
-    public partial class FormTypesAdd : Form
+    public partial class FormTypesAddPartners : Form
     {
         string msgError = "Поле не может быть пустым";
-        public FormTypesAdd()
+        public FormTypesAddPartners()
         {
             InitializeComponent();
         }
@@ -30,7 +20,7 @@ namespace PR4
 
 
 
-        private void textBoxTypeName_TextChanged(object sender, EventArgs e)
+        private void TextBoxTypeName_TextChanged(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(textBoxTypeName.Text))
             {

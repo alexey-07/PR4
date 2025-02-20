@@ -7,7 +7,9 @@ public partial class TypeOfPartner
 {
     public short Id { get; set; }
 
-    public string TypeOfPartner1 { get; set; } = null!;
+    public string TypeNamePartner { get; set; } = null!;
 
+    // навигационные свойства
     public virtual ICollection<Partner> Partners { get; set; } = new List<Partner>();
+    //public object TypeProduct { get; internal set; }
 }

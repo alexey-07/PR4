@@ -1,26 +1,34 @@
-using Microsoft.EntityFrameworkCore;
+ï»¿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PR4
 {
-    public partial class Form1 : Form
+    public partial class InfoProducts : Form
     {
         private AppContext db;
-        public Form1()
+
+        public InfoProducts()
         {
             InitializeComponent();
         }
-
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             db = new AppContext();
-            db.TypeOfPartners.Load();
-            dataGridViewTypes.DataSource = db.TypeOfPartners.Local.OrderBy(o => o.TypeNamePartner).ToList();
+            db.TypeOfProducts.Load();
+            dataGridViewTypes.DataSource = db.TypeOfProducts.Local.OrderBy(o => o.TypeNameProduct).ToList();
             dataGridViewTypes.Columns["Id"].Visible = false;
-            dataGridViewTypes.Columns["Partners"].Visible = false;
+            dataGridViewTypes.Columns["Products"].Visible = false;
 
-            dataGridViewTypes.Columns["TypeNamePartner"].HeaderText = "Òèï";
+            dataGridViewTypes.Columns["TypeNameProduct"].HeaderText = "Ð¢Ð¸Ð¿";
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -32,7 +40,7 @@ namespace PR4
 
         private void ButtonTypeAdd_Click(object sender, EventArgs e)
         {
-            FormTypesAddPartners formTypesAdd = new FormTypesAddPartners();
+            FormTypesAddProducts formTypesAdd = new FormTypesAddProducts();
             DialogResult result = formTypesAdd.ShowDialog(this);
 
             if (result == DialogResult.Cancel)
@@ -41,16 +49,16 @@ namespace PR4
             }
 
             if (formTypesAdd.textBoxTypeName.Text == String.Empty)
-                MessageBox.Show("Ïîëå íå ìîæåò áûòü ïóñòûì!");
+                MessageBox.Show("ÐŸÐ¾Ð»Ðµ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¿ÑƒÑÑ‚Ñ‹Ð¼!");
 
-            TypeOfPartner typeOfPartner = new TypeOfPartner();
-            typeOfPartner.TypeNamePartner = formTypesAdd.textBoxTypeName.Text;
+            TypeOfProduct typeOfProduct = new TypeOfProduct();
+            typeOfProduct.TypeNameProduct = formTypesAdd.textBoxTypeName.Text;
 
-            db.TypeOfPartners.Add(typeOfPartner);
+            db.TypeOfProducts.Add(typeOfProduct);
             db.SaveChanges();
 
-            MessageBox.Show("Íîâûé îáúåêò äîáàâëåí!");
-            dataGridViewTypes.DataSource = db.TypeOfPartners.Local.OrderBy(o => o.TypeNamePartner).ToList();
+            MessageBox.Show("ÐÐ¾Ð²Ñ‹Ð¹ Ð¾Ð±ÑŠÐµÐºÑ‚ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½!");
+            dataGridViewTypes.DataSource = db.TypeOfProducts.Local.OrderBy(o => o.TypeNameProduct).ToList();
 
         }
 
@@ -65,30 +73,30 @@ namespace PR4
                 if (!converted)
                     return;
 
-                TypeOfPartner typeOfPartner = db.TypeOfPartners.Find(id);
+                TypeOfProduct typeOfProduct = db.TypeOfProducts.Find(id);
 
                 FormTypesAddPartners formTypesAdd = new();
-                formTypesAdd.textBoxTypeName.Text = typeOfPartner.TypeNamePartner;
+                formTypesAdd.textBoxTypeName.Text = typeOfProduct.TypeNameProduct;
                 DialogResult result = formTypesAdd.ShowDialog(this);
                 if (result == DialogResult.Cancel)
                 {
                     return;
 
                 }
-                typeOfPartner.TypeNamePartner = formTypesAdd.textBoxTypeName.Text;
+                typeOfProduct.TypeNameProduct = formTypesAdd.textBoxTypeName.Text;
                 db.SaveChanges();
-                MessageBox.Show("Îáúåêò èçìåíåí!");
-                dataGridViewTypes.DataSource = db.TypeOfPartners.Local.OrderBy(o => o.TypeNamePartner).ToList();
+                MessageBox.Show("ÐžÐ±ÑŠÐµÐºÑ‚ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½!");
+                dataGridViewTypes.DataSource = db.TypeOfProducts.Local.OrderBy(o => o.TypeNameProduct).ToList();
             }
 
         }
 
         private void ButtonTypeDelete_Click(object sender, EventArgs e)
         {
-            if(dataGridViewTypes.SelectedRows.Count ==0)
+            if (dataGridViewTypes.SelectedRows.Count == 0)
                 return;
             DialogResult result = MessageBox.Show(
-               "Âû óâåðåíû, ÷òî õîòèòå óäàëèòü îáúåêò?",
+               "Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¾Ð±ÑŠÐµÐºÑ‚?",
                "",
                MessageBoxButtons.YesNo,
                MessageBoxIcon.Question);
@@ -100,11 +108,11 @@ namespace PR4
             if (!converted)
                 return;
 
-            TypeOfPartner typeOfPartner = db.TypeOfPartners.Find(id);
-            db.TypeOfPartners.Remove(typeOfPartner);
+            TypeOfProduct typeOfProduct = db.TypeOfProducts.Find(id);
+            db.TypeOfProducts.Remove(typeOfProduct);
             db.SaveChanges();
-            MessageBox.Show("Îáúåêò óäàëåí!");
-            dataGridViewTypes.DataSource = db.TypeOfPartners.Local.OrderBy(o => o.TypeNamePartner).ToList();
+            MessageBox.Show("ÐžÐ±ÑŠÐµÐºÑ‚ ÑƒÐ´Ð°Ð»ÐµÐ½!");
+            dataGridViewTypes.DataSource = db.TypeOfProducts.Local.OrderBy(o => o.TypeNameProduct).ToList();
         }
     }
 }

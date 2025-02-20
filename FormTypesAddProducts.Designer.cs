@@ -1,6 +1,6 @@
 ﻿namespace PR4
 {
-    partial class FormTypesAdd
+    partial class FormTypesAddProducts
     {
         /// <summary>
         /// Required designer variable.
@@ -28,49 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             panelFIll = new Panel();
-            textBoxTypeName = new TextBox();
-            labelTypeName = new Label();
             flowLayoutPanelBottom = new FlowLayoutPanel();
             buttonSave = new Button();
             buttonCancel = new Button();
-            errorProvider = new ErrorProvider(components);
+            textBoxTypeName = new TextBox();
+            labelTypeName = new Label();
             panelFIll.SuspendLayout();
             flowLayoutPanelBottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // panelFIll
             // 
+            panelFIll.Controls.Add(flowLayoutPanelBottom);
             panelFIll.Controls.Add(textBoxTypeName);
             panelFIll.Controls.Add(labelTypeName);
             panelFIll.Dock = DockStyle.Fill;
             panelFIll.Location = new Point(0, 0);
             panelFIll.Name = "panelFIll";
             panelFIll.Padding = new Padding(15);
-            panelFIll.Size = new Size(384, 176);
-            panelFIll.TabIndex = 0;
-            // 
-            // textBoxTypeName
-            // 
-            textBoxTypeName.Dock = DockStyle.Top;
-            textBoxTypeName.Location = new Point(15, 40);
-            textBoxTypeName.Name = "textBoxTypeName";
-            textBoxTypeName.Size = new Size(354, 33);
-            textBoxTypeName.TabIndex = 1;
-            textBoxTypeName.TextChanged += textBoxTypeName_TextChanged;
-            textBoxTypeName.Validated += textBoxTypeName_Validated;
-            // 
-            // labelTypeName
-            // 
-            labelTypeName.AutoSize = true;
-            labelTypeName.Dock = DockStyle.Top;
-            labelTypeName.Location = new Point(15, 15);
-            labelTypeName.Name = "labelTypeName";
-            labelTypeName.Size = new Size(145, 25);
-            labelTypeName.TabIndex = 0;
-            labelTypeName.Text = "Тип Партнеров";
+            panelFIll.Size = new Size(405, 162);
+            panelFIll.TabIndex = 1;
             // 
             // flowLayoutPanelBottom
             // 
@@ -78,64 +56,75 @@
             flowLayoutPanelBottom.Controls.Add(buttonCancel);
             flowLayoutPanelBottom.Dock = DockStyle.Bottom;
             flowLayoutPanelBottom.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanelBottom.Location = new Point(0, 76);
+            flowLayoutPanelBottom.Location = new Point(15, 71);
             flowLayoutPanelBottom.Name = "flowLayoutPanelBottom";
             flowLayoutPanelBottom.Padding = new Padding(10);
-            flowLayoutPanelBottom.Size = new Size(384, 100);
-            flowLayoutPanelBottom.TabIndex = 1;
+            flowLayoutPanelBottom.Size = new Size(375, 76);
+            flowLayoutPanelBottom.TabIndex = 2;
             // 
             // buttonSave
             // 
             buttonSave.DialogResult = DialogResult.OK;
-            buttonSave.Location = new Point(219, 25);
+            buttonSave.Location = new Point(195, 25);
             buttonSave.Margin = new Padding(15);
             buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(130, 35);
+            buttonSave.Size = new Size(145, 42);
             buttonSave.TabIndex = 0;
             buttonSave.Text = "Сохранить";
             buttonSave.UseVisualStyleBackColor = true;
-            buttonSave.Click += button1_Click;
             // 
             // buttonCancel
             // 
             buttonCancel.DialogResult = DialogResult.Cancel;
-            buttonCancel.Location = new Point(59, 25);
+            buttonCancel.Location = new Point(22, 25);
             buttonCancel.Margin = new Padding(15);
             buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(130, 35);
+            buttonCancel.Size = new Size(143, 42);
             buttonCancel.TabIndex = 1;
             buttonCancel.Text = "Отменить";
             buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // errorProvider
+            // textBoxTypeName
             // 
-            errorProvider.ContainerControl = this;
+            textBoxTypeName.Dock = DockStyle.Top;
+            textBoxTypeName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            textBoxTypeName.Location = new Point(15, 36);
+            textBoxTypeName.Name = "textBoxTypeName";
+            textBoxTypeName.Size = new Size(375, 29);
+            textBoxTypeName.TabIndex = 1;
             // 
-            // FormTypesAdd
+            // labelTypeName
             // 
-            AutoScaleDimensions = new SizeF(11F, 25F);
+            labelTypeName.AutoSize = true;
+            labelTypeName.Dock = DockStyle.Top;
+            labelTypeName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelTypeName.Location = new Point(15, 15);
+            labelTypeName.Name = "labelTypeName";
+            labelTypeName.Size = new Size(120, 21);
+            labelTypeName.TabIndex = 0;
+            labelTypeName.Text = "Тип продукции";
+            // 
+            // FormTypesAddProducts
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 176);
-            Controls.Add(flowLayoutPanelBottom);
+            ClientSize = new Size(405, 162);
             Controls.Add(panelFIll);
-            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            Margin = new Padding(5);
-            Name = "FormTypesAdd";
+            Name = "FormTypesAddProducts";
+            Text = "W";
             panelFIll.ResumeLayout(false);
             panelFIll.PerformLayout();
             flowLayoutPanelBottom.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panelFIll;
+        protected internal TextBox textBoxTypeName;
+        private Label labelTypeName;
         private FlowLayoutPanel flowLayoutPanelBottom;
         private Button buttonSave;
         private Button buttonCancel;
-        private Label labelTypeName;
-        protected internal TextBox textBoxTypeName;
-        private ErrorProvider errorProvider;
     }
 }
