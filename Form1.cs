@@ -44,7 +44,7 @@ namespace PR4
                 MessageBox.Show("Поле не может быть пустым!");
 
             TypeOfPartner typeOfPartner = new TypeOfPartner();
-            typeOfPartner.TypeOfPartner1 = formTypesAdd.textBoxTypeName.Text;
+            typeOfPartner.TypeOfPartner1 = formTypesAdd.textBoxTypeName.Text;//
 
             db.TypeOfPartners.Add(typeOfPartner);
             db.SaveChanges();
