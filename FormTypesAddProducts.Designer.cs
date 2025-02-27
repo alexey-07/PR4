@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panelFIll = new Panel();
             flowLayoutPanelBottom = new FlowLayoutPanel();
             buttonSave = new Button();
             buttonCancel = new Button();
             textBoxTypeName = new TextBox();
             labelTypeName = new Label();
+            errorProvider = new ErrorProvider(components);
             panelFIll.SuspendLayout();
             flowLayoutPanelBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // panelFIll
@@ -92,6 +95,8 @@
             textBoxTypeName.Name = "textBoxTypeName";
             textBoxTypeName.Size = new Size(375, 29);
             textBoxTypeName.TabIndex = 1;
+            textBoxTypeName.TextChanged += TextBoxTypeName_TextChanged;
+            textBoxTypeName.Validated += TextBoxTypeName_Validated;
             // 
             // labelTypeName
             // 
@@ -104,6 +109,10 @@
             labelTypeName.TabIndex = 0;
             labelTypeName.Text = "Тип продукции";
             // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
+            // 
             // FormTypesAddProducts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -115,6 +124,7 @@
             panelFIll.ResumeLayout(false);
             panelFIll.PerformLayout();
             flowLayoutPanelBottom.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -126,5 +136,6 @@
         private FlowLayoutPanel flowLayoutPanelBottom;
         private Button buttonSave;
         private Button buttonCancel;
+        private ErrorProvider errorProvider;
     }
 }
